@@ -1,0 +1,12 @@
+.logo{
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &-img{
+    width: 150px;
+    height: 40px;
+  }
+}

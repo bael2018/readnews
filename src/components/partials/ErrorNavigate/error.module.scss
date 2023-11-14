@@ -1,0 +1,44 @@
+@import 'scss/variables.scss';
+
+.error{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg{
+    width: 150px;
+    height: 150px;
+    color: $primary-color;
+  }
+
+  div{
+    margin-left: 30px;
+
+    h3{
+      margin: 0 0 10px 0;
+      color: $primary-color;
+      font-size: 27px;
+    }
+
+    p{
+      margin: 0;
+      color: $primary-color;
+    }
+
+    button{
+      margin-top: 15px;
+      height: 40px;
+      width: 140px;
+      border: none;
+      outline: none;
+      color: #fff;
+      background: $primary-color;
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover{
+        background: $secondary-color;
+      }
+    }
+  }
+}
