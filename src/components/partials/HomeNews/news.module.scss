@@ -1,0 +1,177 @@
+@import 'scss/variables.scss';
+
+.news{
+  margin-top: 15px;
+
+  &-wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-list{
+    margin-top: 20px;
+    width: 70%;
+
+    &-title{
+      margin: 0 0 30px 0;
+      font-size: 30px;
+      text-transform: uppercase;
+      color: $primary-color;
+    }
+
+    &-block{
+      margin-bottom: 30px;
+
+      &__wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2%;
+
+        &__child{
+          width: 32%;
+          margin-bottom: 20px;
+          max-height: 350px;
+          height: fit-content;
+          overflow: hidden;
+          cursor: pointer;
+
+          img{
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+          }
+          
+          div{
+            h4{
+              margin: 5px 0 0 0;
+              font-size: 18px;
+              color: $primary-color;
+              max-height: 45px;
+              overflow: hidden;
+            }
+
+            p{
+              margin: 5px 0 0 0;
+              font-size: 15px;
+              transition: .3s;
+            }
+
+            span{
+              display: flex;
+              align-items: center;
+              margin-top: 20px;
+              color: $primary-color;
+
+              svg{
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+                color: $secondary-color;
+              }
+            }
+          }
+
+          &:hover div h4{
+            color: $secondary-color;
+          }
+        }
+      }
+
+      &__title{
+        margin-bottom: 20px;
+        position: relative;
+
+        &::before{
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          background: $primary-color;
+          left: 0;
+          top: 45%;
+          transition: .3s;
+        }
+
+        h4{
+          font-size: 20px;
+          margin: 0;
+          color: $primary-color;
+          padding-bottom: 7px;
+          background: #fff;
+          display: inline-block;
+          position: relative;
+          padding-right: 10px;
+        }
+      }
+
+      &:hover &__title::before{
+        background: $secondary-color;
+      }
+    }
+  }
+
+  &-fixed{
+    top: 20px;
+    width: 29%;
+    box-sizing: border-box;
+    padding: 15px;
+    padding-bottom: 0px;
+    height: fit-content;
+    background: $primary-color;
+    position: sticky;
+
+    & div:last-child{
+      border: none;
+      margin-bottom: 0;
+
+      &::before{
+        display: none;
+      }
+    }
+
+    &__child{
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #fff;
+      position: relative;
+
+      span{
+        display: flex;
+        align-items: center;
+        color: #fff;
+        margin-bottom: 5px;
+        font-size: 14px;
+
+        svg{
+          width: 15px;
+          height: 15px;
+          margin-right: 5px;
+          color: $secondary-color;
+        }
+      }
+
+      p{
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.6;
+        cursor: pointer;
+        margin: 0;
+      }
+
+      &::before{
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 1px;
+        background: $secondary-color;
+        left: 0;
+        transition: .3s;
+        bottom: -1px;
+      }
+
+      &:hover::before{
+        width: 100%;
+      }
+    }
+  }
+}

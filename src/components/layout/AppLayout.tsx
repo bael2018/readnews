@@ -5,9 +5,11 @@ import { Outlet } from "react-router-dom"
 const AppLayout = () => {
   return (
     <div className="layout">
-      <Header/>
-      <div className="container-width">
-        <Outlet/>
+      <div>
+        <Header/>
+        <div className="container-width">
+          <Outlet/>
+        </div>
       </div>
       <Footer/>
     </div>

@@ -1,0 +1,43 @@
+@import 'scss/variables.scss';
+
+.paginate{
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  span{
+    font-size: 23px;
+    margin: 0 5px;
+    transform: translateY(-7px);
+    pointer-events: none;
+  }
+
+  button{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: $primary-color;
+    transition: .3s;
+    color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+
+    svg{
+      margin-top: 3px;
+    }
+
+    &:focus,
+    &:hover{
+      background: $secondary-color;
+    }
+  }
+
+  .disabled{
+    pointer-events: none;
+    background: gray;
+  }
+}

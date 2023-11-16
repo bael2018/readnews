@@ -14,6 +14,7 @@ export default defineConfig({
       scss: '/src/scss',
       assets: '/src/assets',
       constants: '/src/constants',
+      routes: '/src/routes',
     }
   }
 })

@@ -1,11 +1,5 @@
-import Logo from "components/elements/Logo"
-
 const App = () => {
-  return (
-    <>
-      <Logo/>
-    </>
-  )
+  return (<></>)
 }
 
 export default App

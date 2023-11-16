@@ -1,9 +1,15 @@
 interface IUrlRoutes {
   HOME: string,
-  ERROR: string
+  ERROR: string,
+  SEARCH: string,
+  CATEGORY: string,
+  NEWS: string
 }
 
 export const urlRoutes: IUrlRoutes = {
+  ERROR: '*',
   HOME: '/',
-  ERROR: '*'
+  SEARCH: '/search',
+  CATEGORY: '/category/:title',
+  NEWS: '/news/:id'
 }

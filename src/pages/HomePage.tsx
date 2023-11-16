@@ -1,10 +1,13 @@
+import HomeBanner from "components/partials/HomeBanner"
+import HomeNews from "components/partials/HomeNews"
 import SeoHelmet from "components/Helmet"
 
 const HomePage = () => {
   return (
     <>
       <SeoHelmet config={{ title: 'Home | readnews'}}/>
-      <h1>Home Page</h1>
+      <HomeBanner/>
+      <HomeNews/>
     </>
   )
 }

@@ -1,5 +1,5 @@
-import SeoHelmet from "components/Helmet"
 import ErrorNavigate from "components/partials/ErrorNavigate"
+import SeoHelmet from "components/Helmet"
 
 const ErrorPage = () => {
   return (

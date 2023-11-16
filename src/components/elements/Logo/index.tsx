@@ -8,7 +8,7 @@ const Logo = () => {
 
   return (
     <button onClick={() => navigate(urlRoutes.HOME)} className={cls['logo']}>
-      <img className={cls['logo-img']} src={img}/>
+      <img className={cls['logo-img']} src={img} alt='app-logo'/>
     </button>
   ) 
 }

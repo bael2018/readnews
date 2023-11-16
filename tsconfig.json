@@ -26,6 +26,7 @@
       "scss/*": ["scss/*"],
       "assets/*": ["assets/*"],
       "constants/*": ["constants/*"],
+      "routes/*": ["routes/*"],
     }
   },
   "include": ["src"],
