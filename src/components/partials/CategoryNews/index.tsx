@@ -1,14 +1,25 @@
+import { useGetCustomCategoryNewsQuery } from 'store/query/newsQuery';
 import Pagination from 'components/elements/Pagination';
+import ImageNotFound from 'assets/image-not-found.jpeg'
+import Loader from 'components/elements/Loader';
 import { useNavigate } from 'react-router-dom';
 import { textCutter } from 'utils/textCutter';
+import Error from 'components/elements/Error';
 import cls from './category.module.scss';
 import { Clock5 } from 'lucide-react'
 import { FC, useState } from "react"
+import { fullDate } from 'utils/date';
 
 const CategoryNews: FC<{ category: string | undefined }> = ({ category }) => {
   const [country, setCountry] = useState<string>('Russia')
   const [drop, setDrop] = useState<boolean>(false)
 
+  const { data, isLoading, error } = useGetCustomCategoryNewsQuery({
+    category: category ? category.charAt(0).toUpperCase() + category.slice(1) : '',
+    page: 1,
+    pageSize: 10
+  })
+  
   const navigate = useNavigate()
 
   const dropHandler = (str: string) => {
@@ -16,6 +27,8 @@ const CategoryNews: FC<{ category: string | undefined }> = ({ category }) => {
     setDrop(false)
   }
 
+  if(isLoading) return <Loader/>
+  if(error) return <Error/>
   return (
     <div className={cls['category']}>
       <div className={cls['category-head']}>
@@ -41,39 +54,19 @@ const CategoryNews: FC<{ category: string | undefined }> = ({ category }) => {
       </div>
 
       <div className={cls['category-body']}>
-        <div onClick={() => navigate('/news/23')} className={cls['category-body__child']}>
-          <div className={cls['category-body__child__image']}>
-            <img src="https://cdn.vox-cdn.com/thumbor/bzPOaj6Cyr_s0X8BnzgnJ3s29fQ=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22651022/TRA8660_105_TRL_comp_v004.1092.jpg" alt="" />
-          </div>
+        {data?.map(item => (
+          <div key={item.title} onClick={() => navigate(`/news/${item.title?.split(' ').join('-')}`)} className={cls['category-body__child']}>
+            <div className={cls['category-body__child__image']}>
+              <img src={item.urlToImage ? item.urlToImage : ImageNotFound} alt="new-image" />
+            </div>
 
-          <div className={cls['category-body__child__content']}>
-            <h2>{textCutter('Далеко-далеко за словесными горами. lorem*2 Далеко-далеко за горами. lorem*2', 65)}</h2>
-            <span><Clock5/> 07.05.2023 19:34</span>
-            <p>{textCutter('Далеко-далеко за, словесными горами в стране Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus impedit omnis mollitia nemo quod sit sapiente voluptas atque optio quasi! Sit adipisci magni saepe eaque sapiente, dolor voluptatibus neque nesciunt.Eaque ipsam aspernatur libero quos a ad error exercitationem, totam explicabo cum illo, quas perferendis deserunt aut voluptates veniam quia sequi vitae cupiditate repellendus facilis incidunt ex enim porro? Est!Maxime recusandae tempore facilis odio sequi eaque dignissimos officia impedit repudiandae blanditiis harum autem rem sed neque alias iure, quo nobis dolore dolorem doloribus minus itaque nemo soluta laudantium. Harum! гласных и согласных живут рыбные тексты. Ведущими, это океана. Имеет своих за безопасную которой сих осталось!', 600)}</p>
+            <div className={cls['category-body__child__content']}>
+              <h2>{item.title && textCutter(item.title, 65)}</h2>
+              <span><Clock5/> {item.publishedAt && `${fullDate('07.05.2023').date} ${fullDate('07.05.2023').time}}`}</span>
+              <p>{item.content && textCutter(item.content, 600)}</p>
+            </div>
           </div>
-        </div>
-        <div onClick={() => navigate('/news/23')} className={cls['category-body__child']}>
-          <div className={cls['category-body__child__image']}>
-            <img src="https://cdn.vox-cdn.com/thumbor/bzPOaj6Cyr_s0X8BnzgnJ3s29fQ=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22651022/TRA8660_105_TRL_comp_v004.1092.jpg" alt="" />
-          </div>
-
-          <div className={cls['category-body__child__content']}>
-            <h2>{textCutter('Далеко-далеко за словесными горами. lorem*2 Далеко-далеко за горами. lorem*2', 65)}</h2>
-            <span><Clock5/> 07.05.2023 19:34</span>
-            <p>{textCutter('Далеко-далеко за, словесными горами в стране Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus impedit omnis mollitia nemo quod sit sapiente voluptas atque optio quasi! Sit adipisci magni saepe eaque sapiente, dolor voluptatibus neque nesciunt.Eaque ipsam aspernatur libero quos a ad error exercitationem, totam explicabo cum illo, quas perferendis deserunt aut voluptates veniam quia sequi vitae cupiditate repellendus facilis incidunt ex enim porro? Est!Maxime recusandae tempore facilis odio sequi eaque dignissimos officia impedit repudiandae blanditiis harum autem rem sed neque alias iure, quo nobis dolore dolorem doloribus minus itaque nemo soluta laudantium. Harum! гласных и согласных живут рыбные тексты. Ведущими, это океана. Имеет своих за безопасную которой сих осталось!', 600)}</p>
-          </div>
-        </div>
-        <div onClick={() => navigate('/news/23')} className={cls['category-body__child']}>
-          <div className={cls['category-body__child__image']}>
-            <img src="https://cdn.vox-cdn.com/thumbor/bzPOaj6Cyr_s0X8BnzgnJ3s29fQ=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22651022/TRA8660_105_TRL_comp_v004.1092.jpg" alt="" />
-          </div>
-
-          <div className={cls['category-body__child__content']}>
-            <h2>{textCutter('Далеко-далеко за словесными горами. lorem*2 Далеко-далеко за горами. lorem*2', 65)}</h2>
-            <span><Clock5/> 07.05.2023 19:34</span>
-            <p>{textCutter('Далеко-далеко за, словесными горами в стране Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus impedit omnis mollitia nemo quod sit sapiente voluptas atque optio quasi! Sit adipisci magni saepe eaque sapiente, dolor voluptatibus neque nesciunt.Eaque ipsam aspernatur libero quos a ad error exercitationem, totam explicabo cum illo, quas perferendis deserunt aut voluptates veniam quia sequi vitae cupiditate repellendus facilis incidunt ex enim porro? Est!Maxime recusandae tempore facilis odio sequi eaque dignissimos officia impedit repudiandae blanditiis harum autem rem sed neque alias iure, quo nobis dolore dolorem doloribus minus itaque nemo soluta laudantium. Harum! гласных и согласных живут рыбные тексты. Ведущими, это океана. Имеет своих за безопасную которой сих осталось!', 600)}</p>
-          </div>
-        </div>
+        ))}
       </div>
 
       <Pagination/>

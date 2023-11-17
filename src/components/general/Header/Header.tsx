@@ -84,14 +84,8 @@ const Header: FC = () => {
                 className={cls[lang === 'English' ? 'picked_lang' : '']}
                 onClick={() => langHandler('English')}>English</p>
               <p 
-                className={cls[lang === 'Russian' ? 'picked_lang' : '']}
-                onClick={() => langHandler('Russian')}>Russian</p>
-              <p 
-                className={cls[lang === 'Chinese' ? 'picked_lang' : '']}
-                onClick={() => langHandler('Chinese')}>Chinese</p>
-              <p 
-                className={cls[lang === 'French' ? 'picked_lang' : '']}
-                onClick={() => langHandler('French')}>French</p>
+                className={cls[lang === 'Русский' ? 'picked_lang' : '']}
+                onClick={() => langHandler('Русский')}>Русский</p>
             </div>
           </div>
         </div>

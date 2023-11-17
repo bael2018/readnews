@@ -2,13 +2,25 @@ import Pagination from 'components/elements/Pagination';
 import { textCutter } from 'utils/textCutter';
 import cls from './search.module.scss';
 import { Clock5 } from 'lucide-react'
+import { useState } from 'react';
 
 const SearchNews = () => {
+  const [search, setSearch] = useState<string>('')
+
+  const handleSearch = () => {
+
+  }
+
   return (
     <div className={cls['search']}>
       <div className={cls['search-input']}>
-        <input type="search" placeholder='Search' />
-        <button>SEARCH</button>
+        <input 
+          type="search" 
+          value={search} 
+          onChange={(e) => setSearch(e.target.value)} 
+          placeholder='Search' 
+        />
+        <button onClick={handleSearch}>SEARCH</button>
       </div>
 
       <div className={cls['search-list']}>

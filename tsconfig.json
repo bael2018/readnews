@@ -27,7 +27,8 @@
       "assets/*": ["assets/*"],
       "constants/*": ["constants/*"],
       "routes/*": ["routes/*"],
-    }
+    },
+    "types": ["vite/client"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

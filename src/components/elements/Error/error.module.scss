@@ -1,0 +1,14 @@
+@import 'scss/variables.scss';
+
+.error{
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2{
+    color: $primary-color;
+    margin: 0;
+    font-size: 30px;
+  }
+}

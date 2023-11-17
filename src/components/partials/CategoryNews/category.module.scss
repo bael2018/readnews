@@ -63,6 +63,8 @@
           padding: 5px 0;
           list-style: none;
           left: 2%;
+          max-height: 120px;
+          overflow-y: scroll;
           width: 96%;
           opacity: 0;
           pointer-events: none;

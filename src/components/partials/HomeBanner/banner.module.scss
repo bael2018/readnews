@@ -31,7 +31,7 @@
       
       >p{
         transition: .3s;
-        font-size: 20px;
+        font-size: 30px;
         margin: 0;
         line-height: 1.6;
         color: #fff;
@@ -41,7 +41,7 @@
       div{
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-size: 15px;
 
         span{
@@ -50,7 +50,7 @@
 
           svg{
             color: $secondary-color;
-            margin-right: 5px;
+            margin-right: 7px;
           }
         }
         
@@ -93,16 +93,35 @@
         bottom: 0;  
         box-sizing: border-box;
         color: #fff;
-        padding: 15px;
+        padding: 20px;
         line-height: 1.6;
         background: rgb(0,0,0);
         font-size: 14px;
-        transition: .3s;
-        background: linear-gradient(0deg, rgba(0,0,0,0.7511598389355743) 0%, rgba(0,0,0,0.5018601190476191) 65%, rgba(0,0,0,0) 100%);
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0.7511598389355743) 0%, rgba(0,0,0,0.5018601190476191) 65%, rgba(0,0,0,0) 100%); 
+
+        span{
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+
+          svg{
+            width: 20px;
+            height: 20px;
+            margin-right: 7px;
+            color: $secondary-color;
+          }
+        }
+
+        p{
+          margin: 5px 0 0 0;
+        }
       }
 
       &:hover div{
-        color: $secondary-color;
+        p{
+          color: $secondary-color;
+        }
       }
     }
   }
