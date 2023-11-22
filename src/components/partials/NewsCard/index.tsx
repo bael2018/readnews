@@ -1,6 +1,5 @@
 import NotFoundImage from 'assets/image-not-found.jpeg'
 import { Clock5 } from 'lucide-react';
-import { fullDate } from 'utils/date';
 import cls from './card.module.scss';
 import FixedNews from '../FixedNews';
 import { INew } from 'types/news';
@@ -8,34 +7,34 @@ import { FC } from 'react';
 
 const NewsCard: FC<{ data: INew }> = ({ data }) => {
   const { 
-    urlToImage,
-    author,
-    source,
+    image_url,
     title,
     content,
-    publishedAt
+    pubDate,
+    source_id,
+    creator
   } = data
 
   return (
     <div className={cls['card']}>
       <div className={cls['card-info']}>
-        <img src={urlToImage ? urlToImage : NotFoundImage} alt="news-image" />
+        <img src={image_url ? image_url : NotFoundImage} alt="news-image" />
         <h1>{title}</h1>
 
         <div className={cls['card-info-title']}>
           <span>
-            <Clock5/> {publishedAt && fullDate(publishedAt).date + ' - ' + fullDate(publishedAt).time}
+            <Clock5/> {pubDate && pubDate}
           </span>
-          {source.name && (
+          {source_id && (
             <>
               |
-              <p><b>Source</b> - {source.name}</p>
+              <p><b>Source</b> - {source_id}</p>
             </>
           )}
-          {author && (
+          {creator && (
             <>
               |
-              <p><b>Author</b> - {author}</p>
+              <p><b>Author</b> - {creator}</p>
             </>
           )}
         </div>

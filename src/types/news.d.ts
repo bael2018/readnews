@@ -1,13 +1,17 @@
 export interface INew {
-  source: {
-    id: string | null
-    name: string | null
-  },
-  author: string | null
-  title: string | null
-  description: string | null
-  url: string | null
-  urlToImage: string | null
-  publishedAt: string | null
-  content: string | null
+  article_id: string,
+  category: string[],
+  content: string,
+  country: string[],
+  creator: string[],
+  description: string,
+  image_url: string,
+  keywords: string[],
+  language: string,
+  link: string,
+  pubDate: string,
+  source_id: string,
+  source_priority: number,
+  title: string,
+  video_url: string,
 }

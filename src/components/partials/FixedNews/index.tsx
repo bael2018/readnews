@@ -1,21 +1,27 @@
 import { useGetCustomNewsQuery } from 'store/query/newsQuery';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { textCutter } from 'utils/textCutter';
 import { Clock5 } from 'lucide-react';
 import cls from './fixed.module.scss';
-import { fullDate } from 'utils/date';
 
 const FixedNews = () => {
-  const { data, isSuccess } = useGetCustomNewsQuery({ size: 10, domain: 'cnn.com' })
+  const { data, isSuccess } = useGetCustomNewsQuery({ category: 'science' })
   const navigate = useNavigate()
+
+  const { id } = useParams()
 
   if(isSuccess){
     return (
       <div className={cls['news-fixed']}>
         {data?.map(item => (
-          <div key={item.title} onClick={() => navigate(`/news/${item.title?.split(' ').join('-')}`)} className={cls['news-fixed__child']}>
-            <span><Clock5/> {item.publishedAt && fullDate(item.publishedAt).time}</span>
-            <p>{item.content && textCutter(item.content, 85)}</p>
+          <div 
+            key={item.title} 
+            onClick={() => navigate(`/news/${item.title?.split(' ').join('-')}`)} 
+            className={cls['news-fixed__child']}
+            id={cls[id?.split('-').join(' ') === item.title ? 'active_line' : '']}
+          >
+            <span><Clock5/> {item.pubDate && item.pubDate}</span>
+            <p>{item.title && textCutter(item.title, 85)}</p>
           </div>
         ))}
       </div>

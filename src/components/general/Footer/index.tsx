@@ -25,15 +25,15 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to={`/category/entertainment`}
-                  className={cls[pathname.includes('entertainment') ? 'active_link' : '']} 
-                >Entertainment</Link>
+                  to={`/category/politics`}
+                  className={cls[pathname.includes('politics') ? 'active_link' : '']} 
+                >Politics</Link>
               </li>
               <li>
                 <Link 
-                  to={`/category/general`}
-                  className={cls[pathname.includes('general') ? 'active_link' : '']} 
-                >General</Link>
+                  to={`/category/crime`}
+                  className={cls[pathname.includes('crime') ? 'active_link' : '']} 
+                >Crime</Link>
               </li>
               <li>
                 <Link 

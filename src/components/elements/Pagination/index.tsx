@@ -1,38 +1,29 @@
+import { Dispatch, FC, SetStateAction, useState } from 'react';
 import { ChevronsLeft, ChevronsRight } from 'lucide-react'
 import cls from './paginate.module.scss';
 
-const Pagination = () => {
+const Pagination: FC<{ 
+  page: string, 
+  handler: Dispatch<SetStateAction<string>> }> = ({ page, handler }) => {
+  const [state, setState] = useState('')
+
+  const handlePage = (str: string) => {
+    if(str === 'prev'){
+      if(state){
+        handler(state)
+      }
+    }else{
+      handler(page)
+      setState(page)
+    }
+  }
+
   return (
     <div className={cls['paginate']}>
-      <button className={cls['disabled']}>
+      <button onClick={() => handlePage('prev')} className={cls[!state ? 'disabled' : '']}>
         <ChevronsLeft/>
       </button>
-      <button>
-        1
-      </button>
-      <button>
-        2
-      </button>
-      <button>
-        3
-      </button>
-      <button>
-        4
-      </button>
-      <button>
-        5
-      </button>
-      <button>
-        6
-      </button>
-      <button>
-        6
-      </button>
-      <span>...</span>
-      <button>
-        12
-      </button>
-      <button>
+      <button onClick={() => handlePage('next')} className={cls[!page ? 'disabled' : '']}>
         <ChevronsRight/>
       </button>
     </div>

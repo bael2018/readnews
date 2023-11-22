@@ -7,7 +7,7 @@ import SeoHelmet from "components/Helmet"
 
 const NewsPage = () => {
   const { id } = useParams()
-  const { data, isLoading, error } = useGetSingleNewQuery(id || '')
+  const { data, isLoading, error } = useGetSingleNewQuery(id?.split(' ').slice(0,3).join(' ') || '')
 
   return (
     <>

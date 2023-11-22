@@ -1,31 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { INew } from "types/news";
 
-const initialState = {
-  new: {
-    source: {
-      id: '',
-      name: ''
-    },
-    author: '',
-    title: '',
-    description: '',
-    url: '',
-    urlToImage: '',
-    content: '',
-    publishedAt: ''
-  } as INew
+const initialState: { newPath: string } = {
+  newPath: ''
 }
 
 const newsSlice = createSlice({
   name: 'newsSlice',
   initialState,
   reducers: {
-    addNew: (state, action: PayloadAction<INew>) => {
-      state.new = action.payload
+    addNewPath: (state, action: PayloadAction<string>) => {
+      state.newPath = action.payload
     }
   }
 })
 
-export const { addNew } = newsSlice.actions
+export const { addNewPath } = newsSlice.actions
 export default newsSlice.reducer

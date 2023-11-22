@@ -1,4 +1,4 @@
-import { useGetCustomCategoryNewsQuery } from 'store/query/newsQuery';
+import { useGetCategoryNewsQuery } from 'store/query/newsQuery';
 import Pagination from 'components/elements/Pagination';
 import ImageNotFound from 'assets/image-not-found.jpeg'
 import Loader from 'components/elements/Loader';
@@ -8,27 +8,23 @@ import Error from 'components/elements/Error';
 import cls from './category.module.scss';
 import { Clock5 } from 'lucide-react'
 import { FC, useState } from "react"
-import { fullDate } from 'utils/date';
 
 const CategoryNews: FC<{ category: string | undefined }> = ({ category }) => {
   const [country, setCountry] = useState<string>('Russia')
   const [drop, setDrop] = useState<boolean>(false)
+  const [page, setPage] = useState<string>('')
 
-  const { data, isLoading, error } = useGetCustomCategoryNewsQuery({
-    category: category ? category.charAt(0).toUpperCase() + category.slice(1) : '',
-    page: 1,
-    pageSize: 10
-  })
-  
+  const { data, isLoading, error } = useGetCategoryNewsQuery({ category: category || '', page })
   const navigate = useNavigate()
 
   const dropHandler = (str: string) => {
     setCountry(str)
     setDrop(false)
   }
-
+  
   if(isLoading) return <Loader/>
   if(error) return <Error/>
+  
   return (
     <div className={cls['category']}>
       <div className={cls['category-head']}>
@@ -54,22 +50,22 @@ const CategoryNews: FC<{ category: string | undefined }> = ({ category }) => {
       </div>
 
       <div className={cls['category-body']}>
-        {data?.map(item => (
-          <div key={item.title} onClick={() => navigate(`/news/${item.title?.split(' ').join('-')}`)} className={cls['category-body__child']}>
+        {data?.results?.map(item => (
+          <div key={item.title} onClick={() => navigate(`/news/${item.title}`)} className={cls['category-body__child']}>
             <div className={cls['category-body__child__image']}>
-              <img src={item.urlToImage ? item.urlToImage : ImageNotFound} alt="new-image" />
+              <img src={item.image_url ? item.image_url : ImageNotFound} alt="new-image" />
             </div>
 
             <div className={cls['category-body__child__content']}>
               <h2>{item.title && textCutter(item.title, 65)}</h2>
-              <span><Clock5/> {item.publishedAt && `${fullDate('07.05.2023').date} ${fullDate('07.05.2023').time}}`}</span>
+              <span><Clock5/> {item.pubDate && item.pubDate}</span>
               <p>{item.content && textCutter(item.content, 600)}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <Pagination/>
+      {data?.nextPage && <Pagination handler={setPage} page={data?.nextPage} />}
     </div>
   )
 }

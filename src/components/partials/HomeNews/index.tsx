@@ -9,8 +9,8 @@ const HomeNews = () => {
         <div className={cls['news-list']}>
           <h1 className={cls['news-list-title']}>Read worldwide news</h1>
           <HomeCategoryNews category='Business'/>
-          <HomeCategoryNews category='Entertainment'/>
-          <HomeCategoryNews category='General'/>
+          <HomeCategoryNews category='Politics'/>
+          <HomeCategoryNews category='Crime'/>
           <HomeCategoryNews category='Health'/>
           <HomeCategoryNews category='Science'/>
           <HomeCategoryNews category='Sports'/>

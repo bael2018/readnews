@@ -17,11 +17,11 @@ const headerLinks: ILink[] = [
   },
   {
     id: 2,
-    title: 'Entertainment'
+    title: 'Politics'
   },
   {
     id: 3,
-    title: 'General'
+    title: 'Crime'
   },
   {
     id: 4,
