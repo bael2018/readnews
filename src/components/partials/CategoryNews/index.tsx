@@ -15,8 +15,10 @@ const CategoryNews: FC<{ category: string | undefined }> = ({ category }) => {
   const [page, setPage] = useState<string>('')
 
   const { data, isLoading, error } = useGetCategoryNewsQuery({ category: category || '', page })
-  const navigate = useNavigate()
 
+  console.log(data);
+
+  const navigate = useNavigate()
   const dropHandler = (str: string) => {
     setCountry(str)
     setDrop(false)
@@ -24,7 +26,7 @@ const CategoryNews: FC<{ category: string | undefined }> = ({ category }) => {
   
   if(isLoading) return <Loader/>
   if(error) return <Error/>
-  
+
   return (
     <div className={cls['category']}>
       <div className={cls['category-head']}>

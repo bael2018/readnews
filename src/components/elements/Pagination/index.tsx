@@ -6,6 +6,7 @@ const Pagination: FC<{
   page: string, 
   handler: Dispatch<SetStateAction<string>> }> = ({ page, handler }) => {
   const [state, setState] = useState('')
+  console.log(state);
 
   const handlePage = (str: string) => {
     if(str === 'prev'){
