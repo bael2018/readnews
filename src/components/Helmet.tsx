@@ -12,7 +12,7 @@ interface ISeoHelmetProps {
 const SeoHelmet: FC<ISeoHelmetProps> = ({ config }) => {
   return (
     <Helmet>
-      <title>{config. title}</title>
+      <title>{config.title}</title>
       <meta name="description" content={config.description} />
       <meta name="keywords" content={config.keywords} />
     </Helmet>
