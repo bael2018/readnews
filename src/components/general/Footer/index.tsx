@@ -1,7 +1,7 @@
 import { Facebook, Github, Instagram, Mail, Youtube } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import cls from './footer.module.scss';
-import logo from 'assets/icon.png'
+import logo from 'assets/logo.png'
 
 const Footer = () => {
   const { pathname } = useLocation()
