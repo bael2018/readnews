@@ -11,7 +11,6 @@ const Footer = () => {
       <div className={cls['footer-wrapper']}>
         <div className={cls['footer-wrapper-head']}>
           <img src={logo} alt="footer-logo" />
-          <h2>readnews</h2> 
         </div>
         <div className={cls['footer-wrapper-body']}>
           <div className={cls['footer-wrapper-body__category']}>

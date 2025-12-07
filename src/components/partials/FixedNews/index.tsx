@@ -13,9 +13,9 @@ const FixedNews = () => {
   if(isSuccess){
     return (
       <div className={cls['news-fixed']}>
-        {data?.map(item => (
+        {data?.map((item, index) => (
           <div 
-            key={item.title} 
+            key={index} 
             onClick={() => navigate(`/news/${item.title?.split(' ').join('-')}`)} 
             className={cls['news-fixed__child']}
             id={cls[id?.split('-').join(' ') === item.title ? 'active_line' : '']}
